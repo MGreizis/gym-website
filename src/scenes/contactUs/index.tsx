@@ -9,12 +9,12 @@ type Props = {
 };
 
 const ContactUs = ({ setSelectedPage }: Props) => {
-  const inputStyles = `mt-5 w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white`
+  const inputStyles = `mb-5 w-full rounded-lg bg-primary-300 px-5 py-3 placeholder-white`;
 
   const {
     register,
     trigger,
-    formState: { errors }
+    formState: { errors },
   } = useForm();
 
   const onSubmit = async (e: any) => {
@@ -22,7 +22,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
     if (!isValid) {
       e.preventDefault();
     }
-  }
+  };
 
   return (
     <section id="contactus" className="mx-auto w-5/6 pb-32 pt-24">
@@ -34,7 +34,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+          transition={{ duration: 0.5 }}
           variants={{
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0 },
@@ -57,7 +57,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            transition={{ duration: 0.5 }}
             variants={{
               hidden: { opacity: 0, y: 50 },
               visible: { opacity: 1, y: 0 },
@@ -69,7 +69,7 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               action="https://formsubmit.co/cfe7f4bb303f0e9efb06fb3fa7f4520e"
               method="POST"
             >
-              <input 
+              <input
                 className={inputStyles}
                 type="text"
                 placeholder="NAME"
@@ -81,11 +81,12 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               {errors.name && (
                 <p className="mt-1 text-primary-500">
                   {errors.name.type === "required" && "This field is required."}
-                  {errors.name.type === "maxLength" && "Max length is 100 characters."}
+                  {errors.name.type === "maxLength" &&
+                    "Max length is 100 characters."}
                 </p>
               )}
 
-              <input 
+              <input
                 className={inputStyles}
                 type="text"
                 placeholder="EMAIL"
@@ -97,12 +98,13 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               />
               {errors.email && (
                 <p className="mt-1 text-primary-500">
-                  {errors.email.type === "required" && "This field is required."}
+                  {errors.email.type === "required" &&
+                    "This field is required."}
                   {errors.email.type === "pattern" && "Invalid email address."}
                 </p>
               )}
 
-              <textarea 
+              <textarea
                 className={inputStyles}
                 rows={4}
                 cols={50}
@@ -114,8 +116,10 @@ const ContactUs = ({ setSelectedPage }: Props) => {
               />
               {errors.message && (
                 <p className="mt-1 text-primary-500">
-                  {errors.message.type === "required" && "This field is required."}
-                  {errors.message.type === "maxLength" && "Max length is 2000 characters."}
+                  {errors.message.type === "required" &&
+                    "This field is required."}
+                  {errors.message.type === "maxLength" &&
+                    "Max length is 2000 characters."}
                 </p>
               )}
 
@@ -127,6 +131,29 @@ const ContactUs = ({ setSelectedPage }: Props) => {
                 SUBMIT
               </button>
             </form>
+          </motion.div>
+
+          <motion.div
+            className="relative mt-16 basis-2/5 md:mt-0"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            variants={{
+              hidden: { opacity: 0, y: 50 },
+              visible: { opacity: 1, y: 0 },
+            }}
+          >
+            <div
+              className="w-full before:absolute before:-bottom-20 before:-right-10 before:z-[-1] 
+              md:before:content-evolvetext"
+            >
+              <img
+                className="w-full"
+                alt="contact us graphic"
+                src={ContactUsGraphic}
+              />
+            </div>
           </motion.div>
         </div>
       </motion.div>
